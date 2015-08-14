@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawerlayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+            <LinearLayout
+                android:id="@+id/layout_signin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/toolbar"
+                android:layout_centerInParent="true"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/ivSignin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="signUser"
+                    android:src="@drawable/iv_signin" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/info_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/toolbar"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:visibility="gone">
+
+                <com.android.volley.toolbox.NetworkImageView
+                    android:id="@+id/ivProfilePic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal" />
+
+                <TextView
+                    style="@style/profile_keys"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Name " />
+
+                <TextView
+                    android:id="@+id/tvName"
+                    style="@style/profile_values"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Name " />
+
+                <TextView
+                    style="@style/profile_keys"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email " />
+
+                <TextView
+                    android:id="@+id/tvEmail"
+                    style="@style/profile_values"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email " />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/profile_keys"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minEms="4"
+                        android:text="Gender " />
+
+                    <TextView
+                        android:id="@+id/tvGender"
+                        style="@style/profile_values"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:text="Gender " />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/profile_keys"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minEms="4"
+                        android:text="DOB " />
+
+                    <TextView
+                        android:id="@+id/tvdob"
+                        style="@style/profile_values"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:text="Date of birth " />
+                </LinearLayout>
+
+                <TextView
+                    style="@style/profile_keys"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="About me " />
+
+                <TextView
+                    android:id="@+id/tvAboutMe"
+                    style="@style/profile_values"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="About me " />
+
+            </LinearLayout>
+        </RelativeLayout>
+
+    </android.support.design.widget.CoordinatorLayout>
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/navigation"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/header_nav"
+        app:menu="@menu/menu_nav" />
+
+</android.support.v4.widget.DrawerLayout>

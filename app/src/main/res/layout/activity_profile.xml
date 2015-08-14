@@ -1,0 +1,172 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.apptu.healthybilllion.ProfileActivity">
+
+
+    <!--
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_alignParentTop="true"
+            android:background="?attr/colorPrimary"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+    -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:background="@drawable/profile_bg">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:onClick="changePassword"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/iv_change_pass" />
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Kartheek"
+            android:textColor="@android:color/white"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            android:typeface="sans" />
+
+        <TextView
+            android:id="@+id/tvCompany"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvName"
+            android:layout_centerInParent="true"
+            android:text="\@ AppsForBB"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:typeface="sans" />
+
+        <TextView
+            android:id="@+id/tvDesignation_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvCompany"
+            android:layout_centerInParent="true"
+            android:text="\Jr Software Developer"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:typeface="sans" />
+
+    </RelativeLayout>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="5dp"
+        android:layout_weight="7"
+        android:columnCount="2"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:rowCount="8">
+
+        <TextView
+            style="@style/profile_keys"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Employee Id" />
+
+        <TextView
+            android:id="@+id/tvEmpId"
+            style="@style/profile_values"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1035" />
+
+        <TextView
+            style="@style/profile_keys"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enail" />
+
+        <TextView
+            android:id="@+id/tvEmail"
+            style="@style/profile_values"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="dev.kartheek@appsforbb.net" />
+
+        <TextView
+            style="@style/profile_keys"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Designation" />
+
+        <TextView
+            android:id="@+id/tvDesignation"
+            style="@style/profile_values"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Jr Software Developer" />
+
+        <TextView
+            style="@style/profile_keys"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date Of Join" />
+
+        <TextView
+            android:id="@+id/tvDoj"
+            style="@style/profile_values"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="03-10-2013" />
+
+        <TextView
+            style="@style/profile_keys"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date Of Rel" />
+
+        <TextView
+            android:id="@+id/tvDor"
+            style="@style/profile_values"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" - - - " />
+
+        <TextView
+            style="@style/profile_keys"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Acc Num" />
+
+        <TextView
+            android:id="@+id/tvAccNum"
+            style="@style/profile_values"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" 987654321321689754" />
+
+        <TextView
+            style="@style/profile_keys"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pan " />
+
+        <TextView
+            android:id="@+id/tvPan"
+            style="@style/profile_values"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pan number" />
+    </GridLayout>
+</LinearLayout>
