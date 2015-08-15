@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private boolean mIsResolving = false;
     /* Should we automatically resolve ConnectionResults when possible? */
     private boolean mShouldResolve = false;
+    private static final int UPDATE_REQUEST = 1010;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -180,6 +181,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 drawerlayout.openDrawer(GravityCompat.START);
                 return true;
             case R.id.action_update:
+
+                startActivityForResult(new Intent(this, UpdateActivity.class), UPDATE_REQUEST);
                 return true;
             case R.id.action_signout:
                 signoutUser();
@@ -294,6 +297,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
             mIsResolving = false;
             mGoogleApiClient.connect();
+        } else if (requestCode == this.UPDATE_REQUEST && resultCode==RESULT_OK) {
+            updateUI(true);
         }
     }
 

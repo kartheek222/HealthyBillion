@@ -14,5 +14,10 @@
     <string name="title_activity_google_play_services">GooglePlayServicesActivity</string>
     <string name="title_activity_maps">Map</string>
     <string name="configuration_error">Error: the value of WEB_CLIENT_ID or SERVER_BASE_URL is not  set correctly. This will cause errors when requesting a server auth code.</string>
-
+    <string name="title_activity_update">UpdateActivity</string>
+    <string-array name="gender">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+    <string name="title_activity_swipe_to_refresh">SwipeToRefreshActivity</string>
 </resources>

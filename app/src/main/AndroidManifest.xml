@@ -34,17 +34,28 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".task2.MapsActivity"
+            android:name=".task3.MapsActivity"
             android:label="@string/title_activity_maps" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.kartheek.healthybillion.MainActivity" />
+        </activity>
+        <activity
+            android:name=".UpdateActivity"
+            android:label="@string/title_activity_update"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.kartheek.healthybillion.MainActivity" />
+        </activity>
+        <activity
+            android:name=".task2.SwipeToRefreshActivity"
+            android:label="@string/title_activity_swipe_to_refresh" >
         </activity>
     </application>
 
