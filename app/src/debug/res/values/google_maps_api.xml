@@ -4,15 +4,18 @@
 
     To get one, follow this link, follow the directions and press "Create" at the end:
 
-https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=1A:61:1E:A8:3E:25:37:97:E2:87:5B:75:49:B4:4E:5F:25:83:5A:F7%3Bcom.kartheek.healthybillion.task2
+https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=6F:B4:F4:E7:57:25:22:7A:E2:DF:68:F5:0A:C5:08:4F:DC:56:78:C7%3Bcom.kartheek.healthybillion.task3
 
     You can also add your credentials to an existing key, using this line:
-    1A:61:1E:A8:3E:25:37:97:E2:87:5B:75:49:B4:4E:5F:25:83:5A:F7;com.kartheek.healthybillion.task2
+    6F:B4:F4:E7:57:25:22:7A:E2:DF:68:F5:0A:C5:08:4F:DC:56:78:C7;com.kartheek.healthybillion.task3
 
     Once you have your key (it starts with "AIza"), replace the "google_maps_key"
     string in this file.
     -->
-    <string name="google_maps_key" translatable="false" templateMergeStrategy="preserve">
-        AIzaSyCWCfjZZ0c_WilOSpiYvuACuuwoBr9abOM
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">
+        AIzaSyApXaAYF3P4GSsFfmQ6fsWgD3nqUyuZF84
+    </string>
+    <string name="google_maps_server_key" templateMergeStrategy="preserve" translatable="false">
+        AIzaSyAyJMg36DH1sQRNEzLFImsK1lg0VoftQ5k
     </string>
 </resources>

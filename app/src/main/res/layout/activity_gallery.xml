@@ -1,5 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.kartheek.healthybillion.task2.SwipeToRefreshActivity">
@@ -12,32 +13,14 @@
         android:background="?attr/colorPrimary"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <Button
-        android:id="@+id/btnReset"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_items"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:onClick="resetData"
-        android:text="Reset" />
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:scrollbarStyle="outsideOverlay"
+        android:scrollbars="vertical" />
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/swipe_refresh_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/btnReset"
-        android:layout_below="@+id/toolbar">
-
-        <com.kartheek.healthybillion.task2.FixedRecyclerview
-            android:id="@+id/rv_items"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/toolbar"
-            android:paddingLeft="?attr/listPreferredItemPaddingLeft"
-            android:paddingRight="?attr/listPreferredItemPaddingRight"
-            android:scrollbarStyle="outsideOverlay"
-            android:scrollbars="vertical" />
-
-    </android.support.v4.widget.SwipeRefreshLayout>
 
     <TextView
         android:id="@+id/tvNodata"
@@ -49,4 +32,13 @@
         android:textAppearance="?android:textAppearanceLarge"
         android:textColor="@android:color/darker_gray"
         android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/expanded_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#76000000"
+        android:contentDescription="Zoomed image"
+        android:visibility="invisible" />
+
 </RelativeLayout>

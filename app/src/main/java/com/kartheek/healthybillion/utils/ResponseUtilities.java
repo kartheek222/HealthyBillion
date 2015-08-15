@@ -55,7 +55,7 @@ public class ResponseUtilities {
 
         // final String userId = Utilities.getInstance().getUserId(context);
         // Creating the StringRequest for requesting the data from the server.
-        StringRequest listRequest = new StringRequest(Method.POST, url, new Listener<String>() {
+        StringRequest listRequest = new StringRequest(Method.GET, url, new Listener<String>() {
 
             @Override
             public void onResponse(String response) {

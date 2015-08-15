@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="ANDROID.PERMISSION.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <!--
@@ -39,13 +40,6 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".task3.MapsActivity"
-            android:label="@string/title_activity_maps" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.kartheek.healthybillion.MainActivity" />
-        </activity>
-        <activity
             android:name=".UpdateActivity"
             android:label="@string/title_activity_update"
             android:parentActivityName=".MainActivity" >
@@ -56,6 +50,19 @@
         <activity
             android:name=".task2.SwipeToRefreshActivity"
             android:label="@string/title_activity_swipe_to_refresh" >
+        </activity>
+        <activity
+            android:name=".task3.MapsActivity"
+            android:label="@string/title_activity_maps" >
+        </activity>
+
+        <activity
+            android:name=".task4.GalleryActivity"
+            android:label="@string/title_activity_gallery" >
+        </activity>
+        <activity
+            android:name=".task4.PreviewActivity"
+            android:label="@string/title_activity_preview" >
         </activity>
     </application>
 

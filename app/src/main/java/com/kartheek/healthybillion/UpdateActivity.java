@@ -3,6 +3,7 @@ package com.kartheek.healthybillion;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -27,6 +28,7 @@ public class UpdateActivity extends AppCompatActivity {
     }
 
     private void initViews() {
+        initToolbar();
         etName = (EditText) findViewById(R.id.et_name);
         etEmail = (EditText) findViewById(R.id.et_email);
         gender = (Spinner) findViewById(R.id.spGender);
@@ -38,6 +40,13 @@ public class UpdateActivity extends AppCompatActivity {
         etEmail.setText(preferences.getString(Constants.PREF_EMAIL, ""));
         gender.setSelection(preferences.getInt(Constants.PREF_GENDER, 0));
         etAboutme.setText(preferences.getString(Constants.PREF_ABOUTj_ME, ""));
+        etDob.setText(preferences.getString(Constants.PREF_DOB, ""));
+    }
+
+    private void initToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        setTitle("Update Details");
     }
 
     @Override
@@ -79,7 +88,7 @@ public class UpdateActivity extends AppCompatActivity {
         edit.putString(Constants.PREF_EMAIL, email);
         edit.putString(Constants.PREF_ABOUTj_ME, aboutMe);
         edit.putInt(Constants.PREF_GENDER, sex);
-        edit.commit();
+        edit.apply();
     }
 
 }

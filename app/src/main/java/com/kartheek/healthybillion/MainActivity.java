@@ -33,6 +33,9 @@ import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.plus.People;
 import com.google.android.gms.plus.Plus;
 import com.google.android.gms.plus.model.people.Person;
+import com.kartheek.healthybillion.task2.SwipeToRefreshActivity;
+import com.kartheek.healthybillion.task3.MapsActivity;
+import com.kartheek.healthybillion.task4.GalleryActivity;
 import com.kartheek.healthybillion.utils.Constants;
 import com.kartheek.healthybillion.volley.RequestManager;
 
@@ -90,6 +93,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 .addScope(new Scope(Scopes.PLUS_ME))
                 .addScope(new Scope(Scopes.PROFILE))
                 .build();
+        mGoogleApiClient.connect();
         updateUI(mGoogleApiClient.isConnected());
     }
 
@@ -107,8 +111,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             ((TextView) findViewById(R.id.tvdob)).setText(preferences.getString(Constants.PREF_DOB, ""));
             ((TextView) findViewById(R.id.tvAboutMe)).setText(preferences.getString(Constants.PREF_ABOUTj_ME, ""));
             int gender = preferences.getInt(Constants.PREF_GENDER, 0);
-            ((TextView) findViewById(R.id.tvGender)).setText(String.valueOf(gender));
-
+            ((TextView) findViewById(R.id.tvGender)).setText((gender == 0) ? "Male" : "Female");
             String url = preferences.getString(Constants.PREF_PIC, "");
             if (!TextUtils.isEmpty(url)) {
                 ImageLoader imageLoader = new ImageLoader(RequestManager.getRequestQueue(), new ImageLoader.ImageCache() {
@@ -200,7 +203,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-
     @Override
     public boolean onNavigationItemSelected(MenuItem menuItem) {
         drawerlayout.closeDrawers();
@@ -209,12 +211,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                 return true;
             case R.id.menu_task2:
+                startActivity(new Intent(this, SwipeToRefreshActivity.class));
                 Toast.makeText(this, "Task 2", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.menu_task3:
+                startActivity(new Intent(this, MapsActivity.class));
                 Toast.makeText(this, "Task 3", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.menu_task4:
+                startActivity(new Intent(this, GalleryActivity.class));
                 Toast.makeText(this, "Task 4", Toast.LENGTH_SHORT).show();
                 return true;
             default:
@@ -226,13 +231,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onStart() {
         super.onStart();
-        mGoogleApiClient.connect();
+
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        mGoogleApiClient.disconnect();
     }
     // [END on_start_on_stop]
 
@@ -242,6 +246,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onSaveInstanceState(outState);
         outState.putBoolean(KEY_IS_RESOLVING, mIsResolving);
         outState.putBoolean(KEY_SHOULD_RESOLVE, mShouldResolve);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mGoogleApiClient.disconnect();
+
     }
 
     public void signUser(View view) {
@@ -297,7 +308,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
             mIsResolving = false;
             mGoogleApiClient.connect();
-        } else if (requestCode == this.UPDATE_REQUEST && resultCode==RESULT_OK) {
+        } else if (requestCode == this.UPDATE_REQUEST && resultCode == RESULT_OK) {
             updateUI(true);
         }
     }
