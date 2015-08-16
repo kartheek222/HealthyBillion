@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 
 /**
- * Created by Krishna on 15/08/2015.
+ * Created by Kartheek on 15/08/2015.
  */
 public class FixedRecyclerview extends RecyclerView {
     public FixedRecyclerview(Context context) {

@@ -13,6 +13,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.kartheek.healthybillion.OnStringResponseListener;
 import com.kartheek.healthybillion.volley.RequestManager;
 
+import java.io.File;
 import java.util.Map;
 
 /**
@@ -96,5 +97,13 @@ public class ResponseUtilities {
         // Utilities.getInstance().getRequestQueue(context).add(listRequest);
         listRequest.setTag(tag);
         RequestManager.getRequestQueue().add(listRequest);
+    }
+
+    public File getParentDir(Context context) {
+        File parent = new File(context.getFilesDir(), "Images");
+        if (!parent.exists()) {
+            parent.mkdirs();
+        }
+        return parent;
     }
 }

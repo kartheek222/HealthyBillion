@@ -14,9 +14,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.kartheek.healthybillion.R;
+import com.kartheek.healthybillion.utils.ResponseUtilities;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -39,10 +39,6 @@ public class PreviewActivity extends AppCompatActivity {
         imageView = (ImageView) findViewById(R.id.ivPreview);
         btmSource = toGrayscale(filePath);
         imageView.setImageBitmap(btmSource);
-        if (!getFilesDir().exists()) {
-            boolean status = getFilesDir().mkdirs();
-            Toast.makeText(this, "File creating status :" + status, Toast.LENGTH_SHORT).show();
-        }
     }
 
     @Override
@@ -64,7 +60,7 @@ public class PreviewActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        File destFile = new File(getFilesDir(), sourceFile.getName());
+        File destFile = new File(ResponseUtilities.getInstance().getParentDir(this), sourceFile.getName());
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_save) {
             new SaveTask(destFile, btmSource) {

@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:gravity="center"
-        android:text="No Data"
+        android:text="No Images"
         android:textAppearance="?android:textAppearanceLarge"
         android:textColor="@android:color/darker_gray"
         android:visibility="gone" />

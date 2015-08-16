@@ -4,7 +4,7 @@
     tools:context="com.kartheek.healthybillion.task4.PreviewActivity">
     <item
         android:id="@+id/action_save"
-        android:icon="@android:drawable/ic_menu_save"
+        android:icon="@drawable/ic_menu_save"
         android:orderInCategory="1"
         android:title="Save"
         app:showAsAction="always" />

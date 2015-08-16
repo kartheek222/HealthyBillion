@@ -19,7 +19,7 @@
         android:ellipsize="end"
         android:ems="10"
         android:singleLine="true"
-        android:text="User name"
+        android:text="The Healthy Billion"
         android:textColor="@android:color/white"
         android:textSize="30sp"
         android:textStyle="bold" />

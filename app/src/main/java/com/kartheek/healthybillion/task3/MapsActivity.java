@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.android.volley.NetworkResponse;
 import com.android.volley.VolleyError;
@@ -139,6 +141,12 @@ public class MapsActivity extends AppCompatActivity implements OnStringResponseL
         }
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_maps, menu);
+        return true;
+    }
+
     private float getColorConst(String color) {
         switch (color) {
             case "Red":
@@ -158,10 +166,41 @@ public class MapsActivity extends AppCompatActivity implements OnStringResponseL
 
     private void setLocation(double latitude, double logitude) {
         CameraUpdate cameraUpdate;
-        cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(latitude, logitude), (latitude == 0 && logitude == 0) ? 0 : 10);
+        cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(latitude, logitude), (latitude == 0 && logitude == 0) ? 0 : 12);
         mMap.animateCamera(cameraUpdate);
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_view_type_hybrid:
+                if (mMap.getMapType() != GoogleMap.MAP_TYPE_HYBRID) {
+                    mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+                }
+                return true;
+
+            case R.id.menu_view_type_normal:
+                if (mMap.getMapType() != GoogleMap.MAP_TYPE_NORMAL) {
+                    mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                }
+                return true;
+
+            case R.id.menu_view_type_satellite:
+                if (mMap.getMapType() != GoogleMap.MAP_TYPE_SATELLITE) {
+                    mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+                }
+                return true;
+
+            case R.id.menu_view_type_terrain:
+                if (mMap.getMapType() != GoogleMap.MAP_TYPE_TERRAIN) {
+                    mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+                }
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+    }
 
     private void addMarkers(List<LatBeans> pointsList) {
         for (LatBeans bean : pointsList) {

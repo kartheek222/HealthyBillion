@@ -24,8 +24,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.kartheek.healthybillion.R;
+import com.kartheek.healthybillion.utils.ResponseUtilities;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
@@ -54,6 +56,8 @@ public class GalleryActivity extends AppCompatActivity implements View.OnClickLi
     private Animator mCurrentAnimator;
     private ImageLoader imageLoader;
     private DisplayImageOptions displayOptions;
+    private ImageView expandedImageView;
+    private TextView tvNodata;
     // Retrieve and cache the system's default "short" animation time.
 
     @Override
@@ -73,19 +77,29 @@ public class GalleryActivity extends AppCompatActivity implements View.OnClickLi
 
     private void initViews() {
         initToolbar();
+        // Load the high-resolution "zoomed-in" image.
+        expandedImageView = (ImageView) findViewById(
+                R.id.expanded_image);
         recyclerView = (RecyclerView) findViewById(R.id.rv_items);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 //        recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST));
-        if (!getFilesDir().exists()) {
-            getFilesDir().mkdirs();
-        }
-        File[] files_arr = getFilesDir().listFiles();
+        File[] files_arr = ResponseUtilities.getInstance().getParentDir(this).listFiles();
         if (files_arr != null)
             filesList.addAll(Arrays.asList(files_arr));
-
+        tvNodata = (TextView) findViewById(R.id.tvNodata);
         adapter = new GalleryRecyclerAdapter(this, filesList, this);
         recyclerView.setAdapter(adapter);
+        updateUI();
     }
+
+    public void updateUI() {
+        if (adapter.getItemCount() == 0) {
+            tvNodata.setVisibility(View.VISIBLE);
+        } else {
+            tvNodata.setVisibility(View.GONE);
+        }
+    }
+
 
     private void initToolbar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -216,10 +230,11 @@ public class GalleryActivity extends AppCompatActivity implements View.OnClickLi
                     startActivityForResult(intent, REQ_PREVIEW);
                 case REQ_PREVIEW:
                     filesList.clear();
-                    File[] files_arr = getFilesDir().listFiles();
+                    File[] files_arr = ResponseUtilities.getInstance().getParentDir(this).listFiles();
                     if (files_arr != null)
                         filesList.addAll(Arrays.asList(files_arr));
                     adapter.notifyDataSetChanged();
+                    updateUI();
             }
         } else if (resultCode == RESULT_CANCELED) {
 
@@ -261,11 +276,7 @@ public class GalleryActivity extends AppCompatActivity implements View.OnClickLi
         if (mCurrentAnimator != null) {
             mCurrentAnimator.cancel();
         }
-
-        // Load the high-resolution "zoomed-in" image.
-        final ImageView expandedImageView = (ImageView) findViewById(
-                R.id.expanded_image);
-        imageLoader.displayImage("file:/" + imageResId, expandedImageView,displayOptions);
+        imageLoader.displayImage("file:/" + imageResId, expandedImageView, displayOptions);
 
         // Calculate the starting and ending bounds for the zoomed-in image.
         // This step involves lots of math. Yay, math.
@@ -391,5 +402,14 @@ public class GalleryActivity extends AppCompatActivity implements View.OnClickLi
                 mCurrentAnimator = set;
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (expandedImageView.getVisibility() == View.INVISIBLE || expandedImageView.getVisibility() == View.GONE) {
+            super.onBackPressed();
+        } else {
+            expandedImageView.callOnClick();
+        }
     }
 }
